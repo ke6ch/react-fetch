@@ -20,6 +20,7 @@ export default class App extends React.Component {
   };
 
   handleSubmit = task => {
+    console.log(task);
     fetch(url, {
       method: "POST",
       headers: {
@@ -28,12 +29,13 @@ export default class App extends React.Component {
       },
       body: JSON.stringify(task)
     })
-      .then(response => {
-        return response.json();
-      })
-      .then(data => {
-        this.setState({ tasks: data });
-      });
+    .then(response => {
+      console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+      return response.json();
+    })
+    .then(data => {
+      this.setState({ tasks: data });
+    });
   };
 
   handleDelete = id => {
@@ -42,7 +44,6 @@ export default class App extends React.Component {
 
   render() {
     const { tasks } = this.state;
-
     return (
       <div>
         <List tasks={tasks} handleDelete={this.handleDelete} />
